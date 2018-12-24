@@ -23,6 +23,7 @@ sql.connect(config).catch(err=>debug(err));
 
 const nav = [{title: 'Author', link: '/author'}, {title: 'Books', link: '/books'},];
 const bookRouter = require('./src/router/bookRouter')(nav);
+const adminRouter = require('./src/router/adminRoutes')(nav);
 
 
 
@@ -39,6 +40,7 @@ app.set('views', './src/views');
 app.set('view engine', 'ejs');
 
 app.use('/books', bookRouter)
+app.use('/admin', adminRouter)
 app.get('/', (req, res) => {
   res.render('index',{
     title: 'Bookstore',
